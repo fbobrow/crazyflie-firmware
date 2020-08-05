@@ -15,4 +15,13 @@
 // #include "drivers/vl53l1x.h"    // Range sensor
 // #include "drivers/pmw3901.h"    // Optical flow sensor
 
+// Crazfylie controller modules
+#include "modules/mixer.h"
+#include "modules/attitude_estimator.h"
+#include "modules/attitude_controller.h"
+#include "modules/vertical_estimator.h"
+#include "modules/vertical_controller.h"
+#include "modules/horizontal_estimator.h"
+#include "modules/horizontal_controller.h"
+
 #endif
