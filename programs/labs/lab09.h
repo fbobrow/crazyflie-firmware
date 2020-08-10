@@ -25,7 +25,8 @@ void callback_range()
     flag_range = true;
 }
 
-float data[2][100];
+// Log data
+float data[2][250][2];
 int i = 0;
 int j;
 
@@ -49,19 +50,19 @@ int main()
             {
                 flag_range = false;  
                 ver_est.correct(att_est.phi,att_est.theta); 
-                // serial.printf("z [m]:%6.2f | w [m/s]:%6.2f \n", ver_est.z, ver_est.w);
-                data[0][i] = ver_est.z_m;
-                data[1][i] = ver_est.z;
-                i++;
-                if(i==100)
-                {
-                    i = 0;
-                    for (j = 0; j< 100; j++)
-                    {
-                        serial.printf("%6.4f\t%6.4f\n", data[0][j], data[1][j]);
-                    }
-                    serial.printf("\n");
-                }
+                serial.printf("z [m]:%6.2f | w [m/s]:%6.2f \n", ver_est.z, ver_est.w);
+                // data[0][i%250][(int)i/250] = ver_est.z_m;
+                // data[1][i%250][(int)i/250] = ver_est.z;
+                // i++;
+                // if(i==500)
+                // {
+                //     i = 0;
+                //     for (j = 0; j< 500; j++)
+                //     {
+                //         serial.printf("%6.4f\t%6.4f\n", data[0][j%250][(int)j/250], data[1][j%250][(int)j/250]);
+                //     }
+                //     serial.printf("\n");
+                // }
             }
         }
     }

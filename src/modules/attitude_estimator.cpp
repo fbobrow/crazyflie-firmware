@@ -2,19 +2,17 @@
 #include "attitude_estimator.h"
 
 // Class constructor
-AttitudeEstimator::AttitudeEstimator() : 
-    imu(IMU_SDA,IMU_SCL), 
-    led_blue_l(LED_BLUE_L,false)
+AttitudeEstimator::AttitudeEstimator() : imu(IMU_SDA,IMU_SCL), led_blue_l(LED_BLUE_L,false)
 {
-    phi = 0.0f;
-    theta = 0.0f;
-    psi = 0.0f;
-    p = 0.0f;
-    q = 0.0f;
-    r = 0.0f; 
-    p_bias = 0.0f;
-    q_bias = 0.0f;
-    r_bias = 0.0f; 
+    phi = 0.0;
+    theta = 0.0;
+    psi = 0.0;
+    p = 0.0;
+    q = 0.0;
+    r = 0.0; 
+    p_bias = 0.0;
+    q_bias = 0.0;
+    r_bias = 0.0; 
 }
 
 // Initialize class 
@@ -39,9 +37,9 @@ void AttitudeEstimator::calibrate_gyro()
     for(int i = 0; i<600;i++)
     {
         imu.read();
-        p_bias += imu.gx/600.0f;
-        q_bias += imu.gy/600.0f;
-        r_bias += imu.gz/600.0f;
+        p_bias += imu.gx/600.0;
+        q_bias += imu.gy/600.0;
+        r_bias += imu.gz/600.0;
         if ((i%10)==0)
         {
            led_blue_l = !led_blue_l;
@@ -67,7 +65,7 @@ void AttitudeEstimator::estimate()
     float theta_g = theta + (q*cos(phi)-r*sin(phi))*dt;
     float psi_g = psi + (q*sin(phi)/cos(theta)+r*cos(phi)/cos(theta))*dt;
     // Estimate Euler angles (rad) from accelerometer and gyroscope
-    phi = (1.0-(l_att*dt))*phi_g+(l_att*dt)*phi_a;
-    theta = (1.0-(l_att*dt))*theta_g+(l_att*dt)*theta_a;
+    phi = (1.0-(omega_c_att*dt))*phi_g+(omega_c_att*dt)*phi_a;
+    theta = (1.0-(omega_c_att*dt))*theta_g+(omega_c_att*dt)*theta_a;
     psi = psi_g;
 }

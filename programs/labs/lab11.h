@@ -26,6 +26,7 @@ void callback_range()
     flag_range = true;
 }
 
+// Log data
 float data[3][250][10];
 int i = 0;
 int j;
@@ -51,26 +52,26 @@ int main()
             {
                 flag_range = false;
                 ver_est.correct(att_est.phi,att_est.theta);   
-// serial.printf("%10.8f\t%10.8f\n", hor_est.u_m, hor_est.u); 
+                serial.printf("%10.8f\t%10.8f\n", hor_est.u_m, hor_est.u); 
             }
             hor_est.predict(0.0,0.0);
             if (ver_est.z >= 0.05)
             {
                 hor_est.correct(att_est.phi,att_est.theta,att_est.p,att_est.q,ver_est.z);
             }
-            data[0][i%250][(int)i/250] = hor_est.u_m;
-            data[1][i%250][(int)i/250] = hor_est.u;
-            data[2][i%250][(int)i/250] = hor_est.x;
-            i++;
-            if(i==2500)
-            {
-                i = 0;
-                for (j = 0; j< 2500; j++)
-                {
-                    serial.printf("%10.8f\t%10.8f\t%10.8f\n", data[0][j%250][(int)j/250], data[1][j%250][(int)j/250],data[2][j%250][(int)j/250]);
-                }
-                serial.printf("\n");
-            }
+            // data[0][i%250][(int)i/250] = hor_est.u_m;
+            // data[1][i%250][(int)i/250] = hor_est.u;
+            // data[2][i%250][(int)i/250] = hor_est.x;
+            // i++;
+            // if(i==2500)
+            // {
+            //     i = 0;
+            //     for (j = 0; j< 2500; j++)
+            //     {
+            //         serial.printf("%10.8f\t%10.8f\t%10.8f\n", data[0][j%250][(int)j/250], data[1][j%250][(int)j/250],data[2][j%250][(int)j/250]);
+            //     }
+            //     serial.printf("\n");
+            // }
         }
     }
 }

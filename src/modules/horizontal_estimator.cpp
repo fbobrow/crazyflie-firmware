@@ -35,7 +35,7 @@ void HorizontalEstimator::correct(float phi, float theta, float p, float q, floa
         float d = z/div;
         /* float */ u_m = (flow.px*sigma+q)*d;
         /* float */ v_m = (flow.py*sigma-p)*d;
-        u = u+omega_c_hor*dt*(u_m-u);
-        v = v+omega_c_hor*dt*(v_m-v);
+        u = u+(omega_c_hor*dt)*(u_m-u);
+        v = v+(omega_c_hor*dt)*(v_m-v);
     }
 }

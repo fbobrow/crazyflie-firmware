@@ -50,20 +50,20 @@ int main()
     tim.start();
     // Arm motors and run controller while stable
     mixer.arm();
-    while(abs(att_est.phi) <= pi/4.0f && abs(att_est.theta) <= pi/4.0f &&  abs(att_est.p) <= 4.0f*pi && abs(att_est.q) <= 4.0f*pi && abs(att_est.r) <= 4.0f*pi && t <= 8.0) 
+    while(abs(att_est.phi) <= pi/4.0f && abs(att_est.theta) <= pi/4.0f &&  abs(att_est.p) <= 4.0f*pi && abs(att_est.q) <= 4.0f*pi && abs(att_est.r) <= 4.0f*pi && t <= (flight_time+Ts_z)) 
     {
         t = tim.read();
-        if (t <= 1.0)
+        if (t <= take_off_time)
         {
-            z_r = t/2.0;
+            z_r = t*(hover_height/take_off_time);
         }
-        else if (t >= 5.0)
+        else if (t <= (take_off_time+hover_time))
         {
-            z_r = (6.0-t)/2.0;
+            z_r = hover_height;  
         }
         else
         {
-            z_r = 0.5;
+            z_r = (flight_time-t)*(hover_height/landing_time);
         }
         if (flag) 
         {
