@@ -2,9 +2,6 @@
 #define attitude_estimator_h
 
 #include "mbed.h"
-// #include "src/utils/pin_names.h"
-// #include "src/utils/parameters.h"
-// #include "src/drivers/bmi088.h"
 #include "crazyflie.h"
 
 // Attitude estimator class

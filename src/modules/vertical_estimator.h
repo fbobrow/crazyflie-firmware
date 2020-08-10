@@ -2,8 +2,6 @@
 #define vertical_estimator_h
 
 #include "mbed.h"
-// #include "src/utils/parameters.h"
-// #include "src/drivers/vl53l1x.h"
 #include "crazyflie.h"
 
 // Vertical estimator class

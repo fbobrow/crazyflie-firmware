@@ -2,8 +2,6 @@
 #define mixer_h
 
 #include "mbed.h"
-// #include "src/utils/pin_names.h"
-// #include "src/utils/parameters.h"
 #include "crazyflie.h"
 
 // Mixer class

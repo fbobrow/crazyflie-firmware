@@ -2,7 +2,6 @@
 #define vertical_controller_h
 
 #include "mbed.h"
-// #include "src/utils/parameters.h"
 #include "crazyflie.h"
 
 // Vertical controller class

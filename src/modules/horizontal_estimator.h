@@ -2,8 +2,6 @@
 #define horizontal_estimator_h
 
 #include "mbed.h"
-// #include "src/utils/parameters.h"
-// #include "src/drivers/pmw3901.h"
 #include "crazyflie.h"
 
 // Vertical estimator class

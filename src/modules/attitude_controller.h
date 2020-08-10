@@ -2,7 +2,6 @@
 #define attitude_controller_h
 
 #include "mbed.h"
-// #include "src/utils/parameters.h"
 #include "crazyflie.h"
 
 // Attitude controller class
