@@ -28,13 +28,13 @@ void HorizontalEstimator::predict(float phi, float theta)
 // Correct horizontal velocity with measurements
 void HorizontalEstimator::correct(float phi, float theta, float p, float q, float z)
 {
-    float div = (cos(phi)*cos(theta));
-    if (div>0.5)
+    float div = cos(phi)*cos(theta);
+    if (div > 0.5)
     {
         flow.read();
         float d = z/div;
-        /* float */ u_m = (flow.px*sigma+q)*d;
-        /* float */ v_m = (flow.py*sigma-p)*d;
+        float u_m = (flow.px*sigma+q)*d;
+        float v_m = (flow.py*sigma-p)*d;
         u = u+(omega_c_hor*dt)*(u_m-u);
         v = v+(omega_c_hor*dt)*(v_m-v);
     }

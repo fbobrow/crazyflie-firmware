@@ -18,7 +18,6 @@ class HorizontalEstimator
     void correct(float phi, float theta, float p, float q, float z);
     // Horizontal positions (m) and velocities (m/s) estimations
     float x, y, u, v;
-    float u_m, v_m;
   private:
     // Flow sensor object
     PMW3901 flow;

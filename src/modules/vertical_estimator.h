@@ -18,7 +18,6 @@ class VerticalEstimator
     void correct(float phi, float theta);
     // Vertical position (m) and velocity (m/s) estimations
     float z, w;
-    float z_m;
   private:
     // Range sensor object
     VL53L0X range;

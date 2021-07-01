@@ -31,7 +31,7 @@ const float motor_test_off_time = 0.15; // s
 // Fligh times
 const float hover_height = 1.0;         // s
 const float take_off_time = 2.0;        // s
-const float hover_time = 10.0;          // s
+const float hover_time = 5.0;          // s
 const float landing_time = 2.0;         // s
 const float flight_time = take_off_time+hover_time+landing_time;
 
